@@ -1,0 +1,57 @@
+<%- include header -%>
+<h2>
+    <%= title %>
+</h2>
+
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">first_name</th>
+        <th scope="col">last_name</th>
+        <th scope="col">email</th>
+        <th scope="col">phone_number</th>
+        <th scrope="col">createdAt</th>
+        <th scrope="col">Detail</th>
+        <th scrope="col">Edit</th>
+        <th scrope="col">Delete</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+        <% users.forEach(function(user){ %>
+        <tr>
+            <td><%= user.id %></td>
+            <td><%= user.first_name %></td>
+            <td><%= user.last_name %></td>
+            <td><%= user.email %></td>
+            <td><%= user.phone_number %></td>
+            <td><%= user.createdAt%></td>
+            <td><a href="/detailuser/<%=user.id%>">Detail page</a></td>
+            <td><a href="/users/<%=user.id%>">Edit</a></td>
+            <!-- <td><a href="/deleteuser/<%=user.id%>">Delete</a></td> -->
+            <td>
+                <button class="btn btn-danger delete-user" data-id="removeUser" onclick="deleteuser('<%=user.id%>'); return false;">Delete</button>
+            </td>
+        </tr>
+      <%}); %>
+    </tbody>
+  </table>
+
+  <script>
+    function deleteuser(id){
+      $.ajax({
+                type: 'DELETE',
+                url: '/users/' + id,
+                success: function(response){
+                    alert('Deleting user');
+                    window.location.href = '/users';
+                },
+                error: function(err){
+                    console.log(err);
+                }
+            });
+    }
+</script>
+<%- include footer -%>

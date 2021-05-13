@@ -1,0 +1,81 @@
+<%- include header -%>
+<div class="row">
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <h1><%= title %></h1>
+    </div>
+    <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+        <%if(data.status ==true){%>
+        <button class="btn btn-danger deactivate-user" data-id="deactivate" onclick="deactivateuser('<%=data.id%>'); return false">
+            Deactivate</button>
+        <%}else{%>
+            <button class="btn btn-danger activate-user" onclick="activateuser('<%=data.id%>'); return false">
+                Activate</button>
+       <%}%>     
+    </div>
+</div>
+<form method="POST">
+        <div class="form-group">
+            <label>First name:</label>
+            <input name="first_name" type="text" class="form-control" value="<%=data.first_name%>"/>
+        </div>
+        <div class="form-group">
+            <label>Last name:</label>
+            <input name="last_name" type="text" class="form-control" value="<%=data.last_name%>"/>
+        </div>
+        <div class="form-group">
+            <label>Created at:</label>
+            <input name="createdAt" type="text" class="form-control" value="<%=data.createdAt%>"/>
+        </div>
+        <div class="form-group">
+            <label>Updated at:</label>
+            <input name="updatedAt" type="text" class="form-control" value="<%=data.updatedAt%>"/>
+        </div>
+        <div class="form-group">
+            <label>Avatar: </label>
+            <input name="avatar" type="text" class="form-control" value="<%=data.avatar%>"/>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <input name="email" type="text" class="form-control" value="<%=data.email%>"/>
+        </div>
+        <div class="form-group">
+            <label>Phone number:</label>
+            <input name="phone_number" type="text" class="form-control" value="<%=data.phone_number%>"/>
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input name="password" type="text" class="form-control" value="<%=data.password%>"/>
+        </div>
+        <button class="btn btn-dark">Submit</button>
+</form>
+<script>
+    function deactivateuser(id){
+        $.ajax({
+            method: "PUT",
+            url: '/users/deactivate/' +id,
+            data:{},/* PUT thì phải có data */
+            success: function(){
+                alert('Deactivate this user successfully!'),
+                window.location.href = '/users/'
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+    function activateuser(id){
+        $.ajax({
+            method: "PUT",
+            url: '/users/activate/' +id,
+            data:{},
+            success: function(){
+                alert('Activate this user successfully!'),
+                window.location.href = '/users/'
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+    }
+</script>
+<%- include footer -%>

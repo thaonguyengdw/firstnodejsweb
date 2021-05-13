@@ -1,0 +1,26 @@
+<%- include header -%>
+<h1><%= title %></h1>
+<div>
+    <table class="table">
+        <tbody>
+          <tr>
+                <tr>
+                    <th scope="col"><div>id</div></th>
+                    <td scope="row"><%=data.id%></td>
+                </tr>
+                <tr>
+                    <th scope="col">First name</th>
+                    <td><%=data.first_name%></td>
+                </tr>
+                <tr>
+                    <th scope="col">Last name</th>
+                    <td scope="row"><%=data.last_name%></td>
+                </tr>
+          </tr>
+        </tbody>
+    </table>
+    <form method="POST">
+        <button class="btn btn-dark" type="submit" name="deletebtn">Delete</button>
+    </form>
+</div>
+<%- include footer -%>

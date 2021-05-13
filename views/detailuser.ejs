@@ -1,0 +1,45 @@
+<%- include header -%>
+
+
+<table class="table">
+    <tbody>
+      <tr>
+        <tr>
+            <th scope="col"><div>id</div></th>
+            <td scope="row"><%=data.id%></td>
+        </tr>
+        <tr>
+            <th scope="col">First name</th>
+            <td><%=data.first_name%></td>
+        </tr>
+        <tr>
+            <th scope="col">Last name</th>
+            <td scope="row"><%=data.last_name%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Created at</div></th>
+            <td scope="row"><%=data.createdAt%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Updated at</div></th>
+            <td scope="row"><%=data.updatedAt%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Avatar</div></th>
+            <td scope="row"><%=data.avatar%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Email</div></th>
+            <td scope="row"><%=data.email%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Phone number</div></th>
+            <td scope="row"><%=data.phone_number%></td>
+        </tr>
+        <tr>
+            <th scope="col"><div>Password</div></th>
+            <td scope="row"><%=data.password%></td>
+        </tr>
+    </tbody>
+  </table>
+<%- include footer -%>
