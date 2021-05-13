@@ -2,19 +2,104 @@
     <%- include header -%>
     <div class="card">
         <div class="card-header">
-            <h4>Register</h4>
+            <h4>Register</h4>   
         </div>
         <div class="card-body">
-        <form method="POST">
+        <form method="POST" name="registerform">
             <div class="form-group">
-                <input type="text"  class="form-control " id="fist_name" name="first_name" placeholder="Enter your first name..."><br>
-                <input type="text"  class="form-control " id="last_name" name="last_name" placeholder="Enter your last name..."><br>
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email..."><br>
-                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number..."><br>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your your password"><br>
-                <button class="btn btn-dark">Send</button>
+                <label>First name:</label>
+                <input type="text"  class="form-control " id="first_name" name="first_name" placeholder="Enter your first name..."/>
+                <small><em class="text-danger" id="firstnameError" hidden>*Required Field</em></small>
             </div>
+            <div class="form-group">
+                <label>Last name:</label>
+                <input type="text"  class="form-control " id="last_name" name="last_name" placeholder="Enter your last name..."/>
+                <small><em class="text-danger" id="lastnameError" hidden>*Required Field</em></small>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email..."/>
+                <small><em class="text-danger" id="emailError" hidden>*Required Field</em></small>
+            </div>
+            <div class="form-group">
+                <label>Phone number</label>
+                <input type="text" class="form-control" id="phone_number" name="phone_number" placeholder="Enter your phone number..."/>
+                <small><em class="text-danger" id="phonenumberError" hidden>*Required Field</em></small>
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your your password"/>
+                <small><em class="text-danger" id="passwordError" hidden>*Required Field</em></small>
+            </div>
+            <button class="btn btn-dark" onclick="return validateForm();">Send</button>
         </form>
         </div>
     </div>
+    <script>
+        function validateForm() {
+          var firstnameVal = document.getElementById("first_name").value;
+          var lastnameVal = document.getElementById("last_name").value;
+          var emailVal = document.getElementById("email").value;
+          var phonenumberVal = document.getElementById("phone_number").value;
+          var passwordVal = document.getElementById("password").value;
+          
+          var valid = true;
+          if(firstnameVal== ''|| firstnameVal == null || firstnameVal == undefined){
+              var firstnameError = document.getElementById("firstnameError");
+              firstnameError.removeAttribute("hidden");
+              valid = false;
+          }else{
+              var firstnameError = document.getElementById("firstnameError");
+              firstnameError.setAttribute("hidden", true);
+           
+          }
+
+          if(lastnameVal == ''|| lastnameVal == null || lastnameVal == undefined){
+              var lastnameError = document.getElementById("lastnameError");
+              lastnameError.removeAttribute("hidden");
+              valid = false;
+          }else{
+              var lastnameError = document.getElementById("lastnameError");
+              lastnameError.setAttribute("hidden", true);
+              
+          }
+
+          if(emailVal == ''|| emailVal == null || emailVal == undefined){
+              var emailError = document.getElementById("emailError");
+              if(emailError!=null){
+              emailError.removeAttribute("hidden");
+              }
+              valid = false;
+          }else{
+              var emailError = document.getElementById("emailError");
+              emailError.setAttribute("hidden", true);
+              
+          }
+         
+
+          if(phonenumberVal == ''|| phonenumberVal == null || phonenumberVal == undefined){
+              var phonenumberError = document.getElementById("phonenumberError");
+              phonenumberError.removeAttribute("hidden");
+              valid = false;
+          }else{
+              var phonenumberError = document.getElementById("phonenumberError");
+              phonenumberError.setAttribute("hidden", true);
+              
+          }
+
+
+         if(passwordVal == ''|| passwordVal == null || passwordVal == undefined){
+              var passwordError = document.getElementById("passwordError");
+              passwordError.removeAttribute("hidden");
+              valid = false;
+          }else{
+              var passwordError = document.getElementById("passwordError");
+              passwordError.setAttribute("hidden", true);
+              
+          }
+          
+          return valid;
+
+        }
+        </script>
     <%- include footer -%>
