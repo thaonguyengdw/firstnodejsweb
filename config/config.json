@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "gdw17100905",
+    "password": "root",
     "database": "myapp_dev",
     "host": "127.0.0.1",
     "dialect": "mysql"
