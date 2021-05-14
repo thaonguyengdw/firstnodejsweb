@@ -7,15 +7,50 @@
         </div>
         <div class="card-body">
             <%if(login==true && success == false){%>
-                <h1>Thông tin đăng nhập bi sai</h1>
+                <h1>Thông tin đăng nhập bị sai</h1>
             <%}%>
-        <div class="form-group">
-            <form method="POST">
-                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email..."><br>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your your password"><br>
-                <button class="send btn btn-dark" id="send-btn">Send</button>
-            </form>
+            <div class="form-group">
+                <form method="POST">
+                    <div class="form-group">
+                        <label>Email:</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your email...">
+                        <small><em class="text-danger" id="emailError" hidden>*Required field</em></small>
+                    </div>
+                    <div class="form-group">
+                        <label>Password:</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your your password">
+                        <small><em class="text-danger" id="passwordError" hidden>*Required field</em></small>
+                    </div>
+                    <button class="send btn btn-dark" id="send-btn" onclick="return validateLoginForm();">Send</button>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+    <script>
+        function validateLoginForm(){
+            var emailVal = document.getElementById("email").value;
+            var passwordVal = document.getElementById("password").value;
+            var valid = true;
+            if(emailVal == '' || emailVal == null || emailVal == undefined){
+                var emailError = document.getElementById("emailError");
+                emailError.removeAttribute("hidden");
+                valid = false;
+            }else{
+                var emailError = document.getElementById("emailError");
+                emailError.setAttribute("hidden", true);
+            }
+
+            if(passwordVal == '' || passwordVal == null || passwordVal == undefined){
+                var passwordError = document.getElementById("passwordError");
+                passwordError.removeAttribute("hidden");
+                valid = false;
+            }else{
+                var passwordError = document.getElementById("passwordError");
+                passwordError.setAttribute("hidden", true);
+            }
+
+            return valid;
+
+        }
+    </script>
     <%- include footer -%>
